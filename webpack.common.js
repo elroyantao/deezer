@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const APP_DIR = path.resolve(__dirname, 'src')
 
 module.exports = {
-  entry: `${APP_DIR}/index.jsx`,
+  entry: ['whatwg-fetch', `${APP_DIR}/index.jsx`],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
