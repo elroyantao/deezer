@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const APP_DIR = path.resolve(__dirname, 'src')
 
@@ -9,10 +10,16 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  plugins: [new HtmlWebpackPlugin({
-    inject: 'body',
-    template: `${APP_DIR}/index.html`
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: `${APP_DIR}/index.html`
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      // allChunks: true
+    })
+  ],
   module: {
     rules: [
       {
@@ -22,7 +29,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]']
+          })
       }
     ]
   },

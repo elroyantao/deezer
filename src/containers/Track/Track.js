@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import CSSModules from 'react-css-modules'
 
-class TrackList extends Component {
+import style from './Track.css'
+
+class Track extends Component {
   static propTypes = {
     track: PropTypes.object
   }
@@ -15,15 +18,15 @@ class TrackList extends Component {
     } = this.props.track
 
     return (
-      <div className="TrackList">
-        <div className="TrackList-image">
-          <img src={cover_medium} />
+      <div styleName="Track">
+        <div styleName="Track-preview">
+          <img styleName="Track-image" src={cover_medium} />
         </div>
-        <div>{title}</div>
+        <div styleName="Track-details">{title}</div>
       </div>
     )
   }
 }
 
 export default connect((state) => ({
-}), null)(TrackList)
+}), null)(CSSModules(Track, style))
