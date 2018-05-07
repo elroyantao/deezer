@@ -6,8 +6,9 @@ import Adapter from 'enzyme-adapter-react-16'
 Enzyme.configure({ adapter: new Adapter() })
 
 const renderComponentHelper = (Component, mountOptions = {}) =>  ({ children, ...props } = {}) => {
+  const TestComponent = Component.WrappedComponent ? Component.WrappedComponent : Component
   const wrapper = shallow(
-    <Component {...props}>{children}</Component>,
+    <TestComponent {...props}>{children}</TestComponent>,
     mountOptions
   )
   return {

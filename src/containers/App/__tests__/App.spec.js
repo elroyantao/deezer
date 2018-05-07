@@ -1,4 +1,4 @@
-import TestComponentHelper from '../../lib/test-helper'
+import TestComponentHelper from '../../../lib/test-helper'
 import App from '../App'
 
 describe('<App />', () => {
