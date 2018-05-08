@@ -1,4 +1,5 @@
 import { callApi } from '../lib/api-helper'
+import { mapArrayToObject } from '../lib/general-helpers'
 
 export const updateLoading = (loading) => ({
   type: 'CHART_UPDATE_LOADING',
@@ -15,7 +16,7 @@ export const setCharts = (chartData) => ({
   ...chartData
 })
 
-export  function getCharts() {
+export function getCharts() {
   return async function (dispatch, getState) {
     dispatch(updateLoading(true))
     try {
@@ -74,14 +75,7 @@ export const fetchTrackAlbum = (track) => {
           ...track,
           genresId: genres.data.map(genre => genre.id)
         },
-        genres: mapGenreToObject(genres.data)
+        genres: mapArrayToObject(genres.data, 'id')
       }
     })
-}
-
-const mapGenreToObject = (genres) => {
-  return genres.reduce((result, genre) => ({
-    ...result,
-    [genre.id]: genre
-  }), {})
 }
