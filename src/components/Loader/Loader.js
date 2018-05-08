@@ -1,7 +1,14 @@
 import React from 'react'
+import CSSModules from 'react-css-modules'
 
-export default function Loader() {
+import style from './Loader.css'
+
+function Loader() {
   return (
-    <div>Loading . . .</div>
+    <div styleName="Loader">
+      <div styleName="spinner"></div>
+    </div>
   )
 }
+
+export default CSSModules(Loader, style)

@@ -8,7 +8,7 @@ class App extends Component {
     const { count, incrementCount } = this.props
     return (
       <div className="App">
-          <ChartContainer />
+        <ChartContainer />
       </div>
     )
   }

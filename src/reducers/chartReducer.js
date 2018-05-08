@@ -17,5 +17,9 @@ export default createReducer(initialState, {
     tracks,
     loading: false,
     error: false
+  }),
+  CHART_SET_ERROR: (state, { error }) => ({
+    ...state,
+    error
   })
 })

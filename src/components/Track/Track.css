@@ -1,0 +1,46 @@
+.Track {
+  display: flex;
+  /* align-items: center; */
+}
+
+.preview {
+  width: 500px;
+  max-width: 20%;
+}
+.image {
+  width: 100%;
+}
+
+.details {
+  flex: 1;
+  margin: 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px
+}
+
+.artist {
+  font-weight: 400;
+}
+
+.album {
+  font-style: italic;
+}
+
+.rank {
+  align-self: center;
+  text-align: center;
+  width: 30px;
+}
+.genre {
+  border: 1px solid #d35400;
+  padding: 5px;
+  margin: 0 5px;
+}
+
+.genreList {
+  display: flex;
+  margin-top: 4px;
+}

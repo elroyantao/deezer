@@ -3,12 +3,14 @@ import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 
 import Loader from '../../components/Loader/Loader'
+import Header from '../../components/Header/Header'
 import TrackList from '../../components/TrackList/TrackList'
 import { getCharts } from '../../actions/chartActions'
 
 class ChartContainer extends Component {
   static propTypes = {
-    getCharts: PropTypes.func.isRequired
+    getCharts: PropTypes.func.isRequired,
+    Loading: PropTypes.bool
   }
   componentDidMount() {
     const { getCharts } = this.props
@@ -26,6 +28,7 @@ class ChartContainer extends Component {
     if (loading) return this.renderLoader()
     return (
       <div className="ChartContainer">
+        <Header />
         <TrackList />
       </div>
     )

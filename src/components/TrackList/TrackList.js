@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import CSSModules from 'react-css-modules'
 
-import Track from '../../containers/Track/Track'
+import Track from '../Track/Track'
+import { getFilteredTracks } from '../../selectors/trackSelector'
+import style from './TrackList.css'
 
 class TrackList extends Component {
   static propTypes = {
@@ -10,8 +13,8 @@ class TrackList extends Component {
   }
   renderTracks = () => {
     const { tracks } = this.props
-    return tracks.map((track) => (
-      <Track track={track} key={track.id}/>
+    return tracks.map((track, index) => (
+      <Track track={track} key={track.id} rank={index + 1}/>
     ))
   }
   render() {
@@ -24,5 +27,5 @@ class TrackList extends Component {
 }
 
 export default connect((state) => ({
-  tracks: state.charts.tracks
-}), null)(TrackList)
+  tracks: getFilteredTracks(state)
+}))(CSSModules(TrackList, style))
